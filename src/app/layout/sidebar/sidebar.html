@@ -1,0 +1,102 @@
+<nav class="sidebar">
+
+  <!-- LOGO HEADER -->
+  <div class="sidebar-header">
+<img src="/H.png" alt="Company Logo" class="company-logo" />
+
+
+    <h4 class="logo-text">HRM</h4>
+  </div>
+
+  <!-- DASHBOARD -->
+  <a
+    routerLink="/dashboard"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="nav-link"
+    (click)="closeMobile()">
+    <i class="bi bi-speedometer2"></i>
+    <span>Dashboard</span>
+  </a>
+
+  <!-- PROFILE -->
+  <a
+    routerLink="/profile"
+    routerLinkActive="active"
+    class="nav-link"
+    (click)="closeMobile()">
+    <i class="bi bi-person"></i>
+    <span>Profile</span>
+  </a>
+
+  <!-- ATTENDANCE -->
+  <a
+    routerLink="/attendance"
+    routerLinkActive="active"
+    class="nav-link"
+    (click)="closeMobile()">
+    <i class="bi bi-calendar-check"></i>
+    <span>Attendance</span>
+  </a>
+
+  <!-- PAYROLL -->
+  <a
+    routerLink="/payroll"
+    routerLinkActive="active"
+    class="nav-link"
+    (click)="closeMobile()">
+    <i class="bi bi-cash-stack"></i>
+    <span>Payroll</span>
+  </a>
+
+  <!-- EMPLOYEES -->
+  <a
+    routerLink="/employees"
+    routerLinkActive="active"
+    class="nav-link"
+    (click)="closeMobile()">
+    <i class="bi bi-people"></i>
+    <span>Employees</span>
+  </a>
+
+
+  <a
+    routerLink="/recruitment"
+    routerLinkActive="active"
+    class="nav-link"
+    (click)="closeMobile()">
+    <i class="bi bi-person-plus"></i>
+    <span>Recruitment</span>
+  </a>
+
+  <a
+    routerLink="/report"
+    routerLinkActive="active"
+    class="nav-link"
+    (click)="closeMobile()">
+    <i class="bi bi-bar-chart-line"></i>
+    <span>Report & Analytics</span>
+  </a>
+
+
+  <a
+    routerLink="/schedule"
+    routerLinkActive="active"
+    class="nav-link"
+    (click)="closeMobile()">
+    <i class="bi bi-calendar-event"></i>
+    <span>Schedule</span>
+  </a>
+
+ 
+  <a
+    routerLink="/helps"
+    routerLinkActive="active"
+    class="nav-link"
+    (click)="closeMobile()">
+    <i class="bi bi-question-circle"></i>
+    <span>Help</span>
+  </a>
+
+</nav>
+

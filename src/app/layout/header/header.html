@@ -1,0 +1,94 @@
+<header
+  class="bg-white border-bottom px-3 px-md-4 py-2
+         d-flex justify-content-between align-items-center sticky-top">
+
+
+  <div class="d-flex align-items-center gap-2">
+    <button
+      class="btn d-lg-none"
+      type="button"
+      (click)="menuClick.emit()">
+      <i class="bi bi-three-dots-vertical fs-5"></i>
+    </button>
+
+    <div class="header-logo d-lg-none">
+      <img src="/H.png" alt="Logo" class="mobile-logo" />
+      <span class="logo-text d-none d-sm-inline">HRM</span>
+    </div>
+
+    <div class="greeting-container">
+      <h6 class="mb-0 fw-semibold welcome-text">Welcome, Rajasekar</h6>
+      <small class="text-muted d-none d-md-block">
+        {{ currentdate | date:'dd MMM yyyy, hh:mm a' }}
+      </small>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center gap-3">
+
+    <!-- Messages -->
+    <a routerLink="/messages" class="header-link d-none d-md-flex">
+      <i class="bi bi-chat header-icon"></i>
+    </a>
+
+    <!-- Settings -->
+    <a routerLink="/settings" class="header-link d-none d-md-flex">
+      <i class="bi bi-gear header-icon"></i>
+    </a>
+
+    <!-- Notifications -->
+    <a routerLink="/notification" class="header-link position-relative">
+      <i class="bi bi-bell header-icon"></i>
+      <span class="notification-dot"></span>
+    </a>
+
+    <!-- PROFILE DROPDOWN -->
+    <div class="dropdown">
+      <button
+        class="btn p-0 border-0 bg-transparent d-flex align-items-center"
+        (click)="toggleDropdown($event)"
+        aria-expanded="false">
+
+        <img
+          src="https://i.pravatar.cc/40"
+          class="rounded-circle profile-img me-1" />
+
+        <i class="bi bi-chevron-down small"></i>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end shadow" [class.show]="isDropdownOpen">
+        <li class="d-md-none">
+          <a class="dropdown-item" routerLink="/messages" (click)="closeDropdown()">
+            <i class="bi bi-chat me-2"></i> Messages
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" routerLink="/profile" (click)="closeDropdown()">
+            <i class="bi bi-person me-2"></i> My Profile
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item" routerLink="/settings" (click)="closeDropdown()">
+            <i class="bi bi-gear me-2"></i> Settings
+          </a>
+        </li>
+
+        <li>
+          <a class="dropdown-item" routerLink="/change-password" (click)="closeDropdown()">
+            <i class="bi bi-lock me-2"></i> Change Password
+          </a>
+        </li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        <li>
+          <button class="dropdown-item text-danger" (click)="logout()">
+            <i class="bi bi-box-arrow-right me-2"></i> Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</header>

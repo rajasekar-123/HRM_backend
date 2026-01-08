@@ -1,0 +1,107 @@
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    overflow: hidden;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.cover-photo {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.cover-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+}
+
+.profile-info-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    padding-top: 0 !important;
+}
+
+.profile-avatar-wrapper {
+    margin-top: -60px;
+    z-index: 2;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    border: 5px solid #fff;
+    object-fit: cover;
+}
+
+.profile-meta {
+    padding-top: 15px;
+}
+
+.activity-timeline {
+    position: relative;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 10px;
+}
+
+.timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 25px;
+    bottom: 0;
+    width: 1px;
+    background: #eee;
+}
+
+.activity-icon-wrapper {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    background: #fff;
+}
+
+@media (max-width: 768px) {
+    .cover-photo {
+        height: 150px;
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .profile-avatar-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile-meta {
+        text-align: center;
+        width: 100%;
+    }
+
+    .profile-info-bar .ms-auto {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+}

@@ -1,0 +1,127 @@
+<div class="recruitment-content">
+
+  <!-- TITLE -->
+  <div class="mb-4">
+    <h3>Recruitment</h3>
+    <p class="text-muted">Open Positions: <strong>{{ openPositions }}</strong></p>
+  </div>
+
+  <!-- KPI CARDS -->
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="stat-card">
+        <p>Open Jobs</p>
+        <h2>5</h2>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="stat-card">
+        <p>Applicants</p>
+        <h2>25</h2>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="stat-card">
+        <p>Interviews</p>
+        <h2>10</h2>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="stat-card">
+        <p>Hired</p>
+        <h2>3</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIPELINE CHART -->
+  <div class="card custom-card mb-4 p-3">
+    <h6 class="mb-3">Hiring Pipeline</h6>
+    <canvas id="pipelineChart"></canvas>
+  </div>
+
+  <!-- TABLES -->
+  <div class="row g-3">
+
+    <!-- JOBS -->
+    <div class="col-12 col-lg-6">
+      <div class="card custom-card">
+        <div class="card-header">Open Positions</div>
+
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Department</th>
+                <th>Openings</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let job of jobs">
+                <td>{{ job.role }}</td>
+                <td>{{ job.department }}</td>
+                <td>{{ job.openings }}</td>
+                <td>
+                  <span
+                    class="badge"
+                    [ngClass]="{
+                      'bg-success': job.status === 'Open',
+                      'bg-secondary': job.status === 'On Hold'
+                    }">
+                    {{ job.status }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- CANDIDATES -->
+    <div class="col-12 col-lg-6">
+      <div class="card custom-card">
+        <div class="card-header">Candidate Pipeline</div>
+
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Stage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of candidates">
+                <td>{{ c.name }}</td>
+                <td>{{ c.role }}</td>
+                <td>
+                  <span
+                    class="badge"
+                    [ngClass]="{
+                      'bg-info': c.stage === 'Screening',
+                      'bg-primary': c.stage === 'Interview',
+                      'bg-warning': c.stage === 'Offer',
+                      'bg-success': c.stage === 'Hired'
+                    }">
+                    {{ c.stage }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

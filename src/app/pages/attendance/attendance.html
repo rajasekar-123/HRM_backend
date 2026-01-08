@@ -1,0 +1,84 @@
+<div class="attendance-content">
+
+  <!-- TITLE -->
+  <div class="mb-4">
+    <h3>Attendance</h3>
+    <p class="text-muted">
+      Today's Attendance: <strong>{{ todayAttendance }}%</strong>
+    </p>
+  </div>
+
+  <!-- KPI CARDS -->
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="stat-card">
+        <p>Present</p>
+        <h2>96</h2>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="stat-card">
+        <p>Absent</p>
+        <h2>8</h2>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="stat-card">
+        <p>On Leave</p>
+        <h2>12</h2>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="stat-card">
+        <p>Late Check-ins</p>
+        <h2>4</h2>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card custom-card mb-4 p-3">
+    <h6 class="mb-3">Weekly Attendance Trend</h6>
+    <canvas id="attendanceTrend"></canvas>
+  </div>
+
+  <!-- TABLE -->
+  <div class="card custom-card">
+    <div class="card-header">Employee Attendance</div>
+
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let emp of attendanceList">
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.department }}</td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-success': emp.status === 'Present',
+                  'bg-warning': emp.status === 'Leave',
+                  'bg-danger': emp.status === 'Absent'
+                }">
+                {{ emp.status }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+

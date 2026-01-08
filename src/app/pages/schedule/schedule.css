@@ -1,0 +1,34 @@
+.schedule-content {
+    padding: 20px;
+    background: #f5f6fa;
+    min-height: calc(100vh - 80px);
+}
+
+/* CARD */
+.schedule-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.schedule-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.schedule-card h6 {
+    font-weight: 600;
+}
+
+/* MOBILE */
+@media (max-width: 576px) {
+    .schedule-content {
+        padding: 12px;
+    }
+
+    .schedule-card {
+        padding: 14px;
+    }
+}

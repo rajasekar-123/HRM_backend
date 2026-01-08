@@ -1,0 +1,86 @@
+<div class="payroll-content">
+
+  <!-- TITLE -->
+  <div class="mb-4">
+    <h3>Payroll</h3>
+    <p class="text-muted">Monthly payroll summary</p>
+  </div>
+
+  <!-- KPI CARDS -->
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="stat-card">
+        <p>Total Payroll</p>
+        <h2>₹{{ totalPayroll | number }}</h2>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="stat-card success">
+        <p>Paid</p>
+        <h2>₹{{ paidAmount | number }}</h2>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="stat-card warning">
+        <p>Pending</p>
+        <h2>₹{{ pendingAmount | number }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHART + TABLE -->
+  <div class="row g-3">
+
+    <!-- CHART -->
+    <div class="col-12 col-lg-4">
+      <div class="card custom-card p-3">
+        <h6 class="mb-3">Payroll Status</h6>
+        <canvas id="payrollChart"></canvas>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="col-12 col-lg-8">
+      <div class="card custom-card">
+        <div class="card-header">Employee Payroll</div>
+
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let emp of payrollList">
+                <td>{{ emp.name }}</td>
+                <td>{{ emp.department }}</td>
+                <td>₹{{ emp.salary | number }}</td>
+                <td>
+                  <span
+                    class="badge"
+                    [ngClass]="{
+                      'bg-success': emp.status === 'Paid',
+                      'bg-warning': emp.status === 'Pending'
+                    }">
+                    {{ emp.status }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

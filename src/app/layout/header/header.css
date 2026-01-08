@@ -1,0 +1,119 @@
+/* ===== HEADER WRAPPER ===== */
+.header {
+    height: 72px;
+    z-index: 1000;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* ===== HEADER LINKS (ICON BUTTONS) ===== */
+.header-link {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #555;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.header-link:hover {
+    background: #f1ecff;
+}
+
+.header-link.active {
+    background: #6f42c1;
+}
+
+.header-link.active .header-icon {
+    color: #fff;
+}
+
+/* ===== HEADER ICONS ===== */
+.header-icon {
+    font-size: 18px;
+    color: #555;
+    transition: color 0.2s ease;
+}
+
+.header-link:hover .header-icon {
+    color: #6f42c1;
+}
+
+/* ===== PROFILE IMAGE ===== */
+.profile-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* ===== NOTIFICATION DOT ===== */
+.notification-dot {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    background: #dc3545;
+    border-radius: 50%;
+}
+
+/* ===== DROPDOWN ===== */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 10px !important;
+    display: none;
+    min-width: 180px;
+}
+
+.dropdown-menu-end {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-menu.show {
+    display: block;
+    position: absolute;
+}
+
+/* ===== MOBILE HEADER LOGO ===== */
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 4px;
+}
+
+.mobile-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.header-logo .logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #6f42c1;
+    letter-spacing: -0.5px;
+}
+
+@media (max-width: 576px) {
+    .welcome-text {
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+    }
+}

@@ -1,0 +1,42 @@
+.dashboard-content {
+    padding: 20px;
+    background-color: #f5f6fa;
+    min-height: calc(100vh - 80px);
+
+}
+
+
+.stat-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card p {
+    margin-bottom: 6px;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.stat-card h2 {
+    margin: 0;
+    font-weight: 700;
+}
+
+
+.custom-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    background: transparent;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+canvas {
+    max-height: 300px;
+}

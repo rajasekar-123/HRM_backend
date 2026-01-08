@@ -1,0 +1,71 @@
+<div class="profile-container">
+  
+
+  <div class="profile-header card border-0 shadow-sm mb-4">
+    <div class="cover-photo" [style.background-image]="'url(' + user.cover + ')'"></div>
+    <div class="profile-info-bar p-3 p-md-4">
+      <div class="profile-avatar-wrapper">
+        <img [src]="user.avatar" alt="Avatar" class="profile-avatar shadow">
+      </div>
+      <div class="profile-meta mt-3 mt-md-0 ms-md-4">
+        <h2 class="fw-bold mb-1">{{ user.name }}</h2>
+        <p class="text-muted mb-0"><i class="bi bi-briefcase me-2"></i>{{ user.role }}</p>
+      </div>
+      <div class="ms-auto mt-3 mt-md-0">
+        <button class="btn btn-primary d-flex align-items-center gap-2">
+          <i class="bi bi-pencil-square"></i> Edit Profile
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm p-4 h-100">
+        <h5 class="fw-bold mb-4">Contact Information</h5>
+        <div class="info-list">
+          <div class="info-item mb-3">
+            <small class="text-muted d-block">Email</small>
+            <span>{{ user.email }}</span>
+          </div>
+          <div class="info-item mb-3">
+            <small class="text-muted d-block">Phone</small>
+            <span>{{ user.phone }}</span>
+          </div>
+          <div class="info-item mb-3">
+            <small class="text-muted d-block">Location</small>
+            <span>{{ user.location }}</span>
+          </div>
+          <div class="info-item">
+            <small class="text-muted d-block">Member Since</small>
+            <span>{{ user.joinDate }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm p-4 mb-4">
+        <h5 class="fw-bold mb-3">About Me</h5>
+        <p class="text-muted mb-0 leading-relaxed">{{ user.bio }}</p>
+      </div>
+
+      <div class="card border-0 shadow-sm p-4">
+        <h5 class="fw-bold mb-4">Recent Activity</h5>
+        <div class="activity-timeline">
+          <div class="timeline-item pb-3" *ngFor="let item of recentActivity">
+            <div class="d-flex gap-3">
+              <div class="activity-icon-wrapper">
+                <i class="bi bi-record-circle text-primary"></i>
+              </div>
+              <div>
+                <p class="mb-1 fw-semibold">{{ item.description }}</p>
+                <small class="text-muted">{{ item.date }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

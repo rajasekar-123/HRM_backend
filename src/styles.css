@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+/* Root layout fix */
+.app-layout {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 992px) {
+    .app-layout {
+        flex-direction: row;
+    }
+}
+
+/* Prevent horizontal scroll */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Offcanvas width */
+.offcanvas-start {
+    width: 260px;
+    max-width: 85vw;
+}

@@ -1,0 +1,116 @@
+.report-content {
+    padding: 20px;
+    background: #f5f6fa;
+    min-height: calc(100vh - 80px);
+}
+
+.stat-card {
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card p {
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.stat-card h2 {
+    margin: 0;
+    font-weight: 700;
+}
+
+.custom-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    background: transparent;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+
+.chart-wrapper {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+
+.chart-wrapper canvas {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+@media (max-width: 576px) {
+    .report-content {
+        padding: 12px;
+    }
+
+
+        /* 📱 Responsive table (mobile card layout) */
+        @media (max-width: 576px) {
+    
+            .table thead {
+                display: none;
+            }
+    
+            .table,
+            .table tbody,
+            .table tr,
+            .table td {
+                display: block;
+                width: 100%;
+            }
+    
+            .table tr {
+                background: #fff;
+                margin-bottom: 12px;
+                border-radius: 10px;
+                padding: 10px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+    
+            .table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 6px 0;
+                border: none;
+                font-size: 14px;
+            }
+    
+            .table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #6c757d;
+            }
+        }
+
+}
+
+/* 📱 Improve action UX on mobile */
+@media (max-width: 576px) {
+
+    /* Hide 'Action :' label text */
+    .table td.action-cell::before {
+        display: none;
+    }
+
+    /* Make download button primary CTA */
+    .download-btn {
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    /* Reduce vertical noise */
+    .table td {
+        gap: 8px;
+    }
+}

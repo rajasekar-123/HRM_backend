@@ -1,0 +1,35 @@
+
+.recruitment-content {
+    padding: 16px;
+    background: #f5f6fa;
+    min-height: calc(100vh - 80px);
+}
+
+
+.stat-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.stat-card h2 {
+    font-size: 1.6rem;
+}
+
+.custom-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+.table {
+    font-size: 14px;
+}
+
+
+canvas {
+    width: 100% !important;
+    max-height: 260px;
+}

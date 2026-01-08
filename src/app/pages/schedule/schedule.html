@@ -1,0 +1,50 @@
+<div class="schedule-content">
+
+  <!-- TITLE -->
+  <div class="mb-4">
+    <h3>Schedule</h3>
+    <p class="text-muted">Upcoming meetings & shifts</p>
+  </div>
+
+  <!-- SCHEDULE LIST -->
+  <div class="row g-3">
+
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let s of schedules">
+      <div class="schedule-card">
+
+        <div class="schedule-header">
+          <span class="badge"
+                [ngClass]="{
+                  'bg-primary': s.type === 'Meeting',
+                  'bg-warning': s.type === 'Interview',
+                  'bg-success': s.type === 'Shift'
+                }">
+            {{ s.type }}
+          </span>
+        </div>
+
+        <h6 class="mt-2">{{ s.title }}</h6>
+
+        <p class="text-muted mb-1">
+          📅 {{ s.date }}
+        </p>
+
+        <p class="text-muted mb-1">
+          ⏰ {{ s.time }}
+        </p>
+
+        <p class="text-muted mb-3">
+          🏢 {{ s.department }}
+        </p>
+
+        <button class="btn btn-sm btn-outline-primary w-100">
+          View Details
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
