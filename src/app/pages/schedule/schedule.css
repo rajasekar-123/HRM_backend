@@ -4,7 +4,7 @@
     min-height: calc(100vh - 80px);
 }
 
-/* CARD */
+
 .schedule-card {
     background: #fff;
     padding: 16px;
@@ -22,7 +22,7 @@
     font-weight: 600;
 }
 
-/* MOBILE */
+
 @media (max-width: 576px) {
     .schedule-content {
         padding: 12px;

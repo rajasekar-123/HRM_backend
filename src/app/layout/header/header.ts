@@ -27,7 +27,6 @@ export class Header {
 
   logout() {
     console.log('Logging out...');
-    // Implement logout logic here
     this.isDropdownOpen = false;
   }
 }

@@ -53,7 +53,6 @@
     }
 
 
-        /* 📱 Responsive table (mobile card layout) */
         @media (max-width: 576px) {
     
             .table thead {
@@ -94,22 +93,22 @@
 
 }
 
-/* 📱 Improve action UX on mobile */
+
 @media (max-width: 576px) {
 
-    /* Hide 'Action :' label text */
+
     .table td.action-cell::before {
         display: none;
     }
 
-    /* Make download button primary CTA */
+  
     .download-btn {
         font-size: 14px;
         padding: 10px;
         border-radius: 8px;
     }
 
-    /* Reduce vertical noise */
+
     .table td {
         gap: 8px;
     }

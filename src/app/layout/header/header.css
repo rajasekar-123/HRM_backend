@@ -1,4 +1,4 @@
-/* ===== HEADER WRAPPER ===== */
+
 .header {
     height: 72px;
     z-index: 1000;
@@ -8,7 +8,7 @@
     border-bottom: 1px solid #eee;
 }
 
-/* ===== HEADER LINKS (ICON BUTTONS) ===== */
+
 .header-link {
     width: 38px;
     height: 38px;
@@ -26,14 +26,14 @@
 }
 
 .header-link.active {
-    background: #6f42c1;
+    background: #6cc142;
 }
 
 .header-link.active .header-icon {
     color: #fff;
 }
 
-/* ===== HEADER ICONS ===== */
+
 .header-icon {
     font-size: 18px;
     color: #555;
@@ -41,10 +41,10 @@
 }
 
 .header-link:hover .header-icon {
-    color: #6f42c1;
+    color: #18161c;
 }
 
-/* ===== PROFILE IMAGE ===== */
+
 .profile-img {
     width: 36px;
     height: 36px;
@@ -53,7 +53,7 @@
     cursor: pointer;
 }
 
-/* ===== NOTIFICATION DOT ===== */
+
 .notification-dot {
     position: absolute;
     top: 4px;
@@ -64,7 +64,7 @@
     border-radius: 50%;
 }
 
-/* ===== DROPDOWN ===== */
+
 .dropdown {
     position: relative;
 }
@@ -87,7 +87,6 @@
     position: absolute;
 }
 
-/* ===== MOBILE HEADER LOGO ===== */
 .header-logo {
     display: flex;
     align-items: center;
@@ -104,7 +103,7 @@
 .header-logo .logo-text {
     font-size: 18px;
     font-weight: 700;
-    color: #6f42c1;
+    color: #131313;
     letter-spacing: -0.5px;
 }
 

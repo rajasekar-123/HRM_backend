@@ -1,1 +1,33 @@
-<p>message works!</p>
+<div class="messages-container">
+
+  <!-- LEFT: MESSAGE LIST -->
+  <div class="message-list">
+    <h4>Messages</h4>
+
+    <div
+      class="message-item"
+      *ngFor="let msg of messages"
+      [class.unread]="!msg.read"
+      (click)="openMessage(msg)"
+    >
+      <div class="sender">{{ msg.sender }}</div>
+      <div class="subject">{{ msg.subject }}</div>
+      <div class="time">{{ msg.time }}</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: MESSAGE VIEW -->
+  <div class="message-view" *ngIf="selectedMessage; else noMessage">
+    <h4>{{ selectedMessage?.subject }}</h4>
+    <p class="from">From: {{ selectedMessage?.sender }}</p>
+    <p class="content">{{ selectedMessage?.content }}</p>
+  </div>
+
+  <ng-template #noMessage>
+    <div class="empty-state">
+      <p>Select a message to read</p>
+    </div>
+  </ng-template>
+
+</div>
+
