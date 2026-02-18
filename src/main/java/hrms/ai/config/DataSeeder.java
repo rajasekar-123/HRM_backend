@@ -44,31 +44,7 @@ public class DataSeeder implements CommandLineRunner {
             log.info("Updated HR user password: admin / admin123");
         }
 
-        if (userRepository.findByUsername("employee1").isEmpty()) {
-            User emp = User.builder()
-                    .username("employee1")
-                    .password(passwordEncoder.encode("emp123"))
-                    .role(Role.ROLE_EMPLOYEE)
-                    .active(true)
-                    .build();
-            userRepository.save(emp);
-            log.info("✅ Seeded Employee user: employee1 / emp123");
-        }
 
-        if (employeeRepository.count() == 0) {
-            Employee employee = Employee.builder()
-                    .employeeCode("EMP001")
-                    .fullName("Arun")
-                    .email("employee1") // Matched with username
-                    .phone("9876543210")
-                    .department("Engineering")
-                    .designation("Software Engineer")
-                    .dateOfJoining(LocalDate.of(2024, 1, 15))
-                    .active(true)
-                    .build();
-            employeeRepository.save(employee);
-            log.info("✅ Seeded employee: John Doe (EMP001)");
-        }
 
         // Ensure Admin has an Employee record for Profile view
         if (employeeRepository.findByEmail("admin").isEmpty()) {
@@ -86,32 +62,14 @@ public class DataSeeder implements CommandLineRunner {
             log.info("✅ Seeded Admin Employee record for Profile access");
         }
 
-        // Patch for existing data
-        employeeRepository.findByEmployeeCode("EMP001").ifPresent(emp -> {
-            if (!"employee1".equals(emp.getEmail())) {
-                emp.setEmail("employee1");
-                employeeRepository.save(emp);
-                log.info("✅ Patched demo employee email to 'employee1' for login consistency");
-            }
-        });
+
 
         // Seed Holidays
         // Seed Leave Balance for Employee 1 (if completely empty, this is a simple
         // checked seed)
         // In a real app, you'd check by employee ID.
         // Seed Leave Balance for Employee 1
-        employeeRepository.findByEmployeeCode("EMP001").ifPresent(emp -> {
-            if (leaveBalanceRepository.findByEmployeeId(emp.getId()).isEmpty()) {
-                hrms.ai.leave.leavebalance.LeaveBalance lb = hrms.ai.leave.leavebalance.LeaveBalance.builder()
-                        .employeeId(emp.getId())
-                        .casualLeave(10)
-                        .sickLeave(10)
-                        .privilegeLeave(15)
-                        .build();
-                leaveBalanceRepository.save(lb);
-                log.info("✅ Seeded Leave Balance for EMP001");
-            }
-        });
+
 
         // Seed Holidays for Current Year
         int year = LocalDate.now().getYear();

@@ -15,4 +15,5 @@ public class EmployeeRequestDto {
     private String department;
     private String designation;
     private LocalDate dateOfJoining;
+    private String password;
 }

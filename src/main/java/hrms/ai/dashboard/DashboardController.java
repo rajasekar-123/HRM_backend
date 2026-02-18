@@ -17,18 +17,7 @@ public class DashboardController {
     @PreAuthorize("hasAuthority('ROLE_HR')")
     @GetMapping("/hr")
     public HrDashboardDto hrOverview() {
-        System.out.println("DashboardController: Received request for hrOverview");
-        HrDashboardDto dummy = HrDashboardDto.builder()
-                .totalEmployees(10)
-                .presentToday(5)
-                .attendancePercentage(50.0)
-                .pendingLeaves(2)
-                .payrollGenerated(true)
-                .pendingPerformanceReviews(3)
-                .build();
-        System.out.println("DashboardController: Returning dummy data");
-        return dummy;
-        // return dashboardService.getHrDashboard();
+        return dashboardService.getHrDashboard();
     }
 
     // Employee Overview
@@ -37,5 +26,11 @@ public class DashboardController {
     public EmployeeDashboardDto employeeOverview(
             @PathVariable Long employeeId) {
         return dashboardService.getEmployeeDashboard(employeeId);
+    }
+
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    @GetMapping("/employee/me")
+    public EmployeeDashboardDto employeeOverviewMe(java.security.Principal principal) {
+        return dashboardService.getEmployeeDashboardByEmail(principal.getName());
     }
 }

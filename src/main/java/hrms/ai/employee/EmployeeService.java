@@ -40,9 +40,13 @@ public class EmployeeService {
 
         // Auto-create a User login account for the new employee
         if (userRepository.findByUsername(dto.getEmail()).isEmpty()) {
+            String rawPassword = (dto.getPassword() != null && !dto.getPassword().isEmpty())
+                    ? dto.getPassword()
+                    : "welcome123";
+
             User user = User.builder()
                     .username(dto.getEmail())
-                    .password(passwordEncoder.encode("welcome123"))
+                    .password(passwordEncoder.encode(rawPassword))
                     .role(Role.ROLE_EMPLOYEE)
                     .active(true)
                     .build();

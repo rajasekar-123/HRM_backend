@@ -128,5 +128,12 @@ public class DashboardService {
                                                 && latestPerformance.isAppraisalTriggered())
                                 .upcomingHolidays(holidayDtos)
                                 .build();
+
+        }
+
+        public EmployeeDashboardDto getEmployeeDashboardByEmail(String email) {
+                var employee = employeeRepository.findByEmail(email)
+                                .orElseThrow(() -> new RuntimeException("Employee not found for email: " + email));
+                return getEmployeeDashboard(employee.getId());
         }
 }

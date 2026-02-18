@@ -2,6 +2,7 @@ package hrms.ai.attendance;
 
 import hrms.ai.attendance.dto.AttendanceRequestDto;
 import hrms.ai.attendance.dto.AttendanceResponseDto;
+import hrms.ai.employee.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +15,36 @@ import java.util.List;
 public class AttendanceController {
 
     private final AttendanceService attendanceService;
+    private final EmployeeService employeeService;
 
-    // Employee â€“ Check in
+    // Employee – Check in (by ID)
     @PreAuthorize("hasRole('EMPLOYEE')")
     @PostMapping("/employee/attendance/check-in/{employeeId}")
     public AttendanceResponseDto checkIn(@PathVariable Long employeeId) {
         return attendanceService.checkIn(employeeId);
     }
 
-    // Employee â€“ Check out
+    // Employee – Check in (by logged-in user)
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    @PostMapping("/employee/attendance/check-in/me")
+    public AttendanceResponseDto checkInMe(java.security.Principal principal) {
+        Long empId = employeeService.getEmployeeByEmail(principal.getName()).getId();
+        return attendanceService.checkIn(empId);
+    }
+
+    // Employee – Check out (by ID)
     @PreAuthorize("hasRole('EMPLOYEE')")
     @PostMapping("/employee/attendance/check-out/{employeeId}")
     public AttendanceResponseDto checkOut(@PathVariable Long employeeId) {
         return attendanceService.checkOut(employeeId);
+    }
+
+    // Employee – Check out (by logged-in user)
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    @PostMapping("/employee/attendance/check-out/me")
+    public AttendanceResponseDto checkOutMe(java.security.Principal principal) {
+        Long empId = employeeService.getEmployeeByEmail(principal.getName()).getId();
+        return attendanceService.checkOut(empId);
     }
 
     // Employee â€“ View own attendance
