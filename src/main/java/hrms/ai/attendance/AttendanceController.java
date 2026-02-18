@@ -1,6 +1,5 @@
 package hrms.ai.attendance;
 
-
 import hrms.ai.attendance.dto.AttendanceRequestDto;
 import hrms.ai.attendance.dto.AttendanceResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class AttendanceController {
 

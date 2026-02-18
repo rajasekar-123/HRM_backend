@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/employee/leave-balance")
+@RequestMapping("/api/employee/leave-balance")
 public class LeaveBalanceController {
 
     private final LeaveBalanceService leaveBalanceService;

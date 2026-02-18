@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class LeaveController {
 
@@ -51,4 +52,3 @@ public class LeaveController {
         return leaveService.rejectLeave(leaveId, reason);
     }
 }
-

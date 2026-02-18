@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/hr/holidays")
+@RequestMapping("/api/hr/holidays")
 public class HolidayController {
 
     private final HolidayService holidayService;
