@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.ChatClient;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -23,6 +25,9 @@ public class LeaveAiService {
         private final PromptBuilder promptBuilder;
         private final AiResponseParser aiResponseParser;
         private final ChatClient chatClient;
+
+        @Value("${spring.ai.ollama.chat.model:phi}")
+        private String model;
 
         public LeaveAiDecisionDto evaluateLeave(LeaveApplyDto dto) {
 
@@ -65,7 +70,8 @@ public class LeaveAiService {
                 String prompt = promptBuilder.buildLeavePrompt(dto, policyContext);
 
                 // 6ï¸âƒ£ LLM call (Ollama)
-                ChatResponse response = chatClient.call(new Prompt(prompt));
+                ChatResponse response = chatClient.call(
+                                new Prompt(prompt, OllamaOptions.create().withModel(model)));
                 String aiResponse = response.getResult().getOutput().getContent();
 
                 // 7ï¸âƒ£ Parse structured response

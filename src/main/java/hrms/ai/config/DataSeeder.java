@@ -46,7 +46,6 @@ public class DataSeeder implements CommandLineRunner {
 
 
 
-        // Ensure Admin has an Employee record for Profile view
         if (employeeRepository.findByEmail("admin").isEmpty()) {
             Employee adminEmp = Employee.builder()
                     .employeeCode("ADM001")

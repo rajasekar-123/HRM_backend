@@ -13,12 +13,19 @@ public class RagRetrieverService {
 
     @PostConstruct
     public void init() {
-        // Mocking a vector store with key-value pairs for now
-        policyStore.put("Annual Leave",
-                "Employees are entitled to 15 days of annual leave per year. Unused leave can be carried forward up to 5 days.");
-        policyStore.put("Sick Leave",
+        // Short codes used by frontend
+        policyStore.put("CL",
+                "12 days of casual leave per year. Cannot be combined with other leave types.");
+        policyStore.put("SL",
                 "Employees get 8 days of sick leave. Medical certificate required for more than 2 consecutive days.");
-        policyStore.put("Casual Leave", "12 days of casual leave per year. Cannot be combined with other leave types.");
+        policyStore.put("PL",
+                "Employees are entitled to 15 days of privilege leave per year. Unused leave can be carried forward up to 5 days.");
+
+        // Full names as aliases
+        policyStore.put("Casual Leave", policyStore.get("CL"));
+        policyStore.put("Sick Leave", policyStore.get("SL"));
+        policyStore.put("Privilege Leave", policyStore.get("PL"));
+        policyStore.put("Annual Leave", policyStore.get("PL"));
         policyStore.put("Maternity Leave", "26 weeks of paid maternity leave for female employees.");
         policyStore.put("Paternity Leave", "2 weeks of paid paternity leave for male employees.");
     }
