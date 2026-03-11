@@ -16,7 +16,7 @@ public class AttendanceService {
 
     private final AttendanceRepository attendanceRepository;
 
-    // Employee â€“ Check in
+
     public AttendanceResponseDto checkIn(Long employeeId) {
 
         LocalDate today = LocalDate.now();
@@ -36,7 +36,7 @@ public class AttendanceService {
         return mapToResponse(attendanceRepository.save(attendance));
     }
 
-    // Employee â€“ Check out
+
     public AttendanceResponseDto checkOut(Long employeeId) {
 
         Attendance attendance = attendanceRepository
@@ -48,7 +48,7 @@ public class AttendanceService {
         return mapToResponse(attendanceRepository.save(attendance));
     }
 
-    // Employee â€“ View own attendance
+
     public List<AttendanceResponseDto> getMyAttendance(Long employeeId) {
         return attendanceRepository.findByEmployeeId(employeeId)
                 .stream()
@@ -56,7 +56,7 @@ public class AttendanceService {
                 .collect(Collectors.toList());
     }
 
-    // Employee â€“ Request correction
+
     public AttendanceResponseDto requestCorrection(Long attendanceId, AttendanceRequestDto dto) {
 
         Attendance attendance = attendanceRepository.findById(attendanceId)
@@ -68,7 +68,7 @@ public class AttendanceService {
         return mapToResponse(attendanceRepository.save(attendance));
     }
 
-    // HR â€“ View all attendance
+
     public List<AttendanceResponseDto> getAllAttendance() {
         return attendanceRepository.findAll()
                 .stream()
@@ -76,7 +76,7 @@ public class AttendanceService {
                 .collect(Collectors.toList());
     }
 
-    // HR â€“ Approve correction
+
     public AttendanceResponseDto approveCorrection(Long attendanceId) {
 
         Attendance attendance = attendanceRepository.findById(attendanceId)
@@ -88,7 +88,7 @@ public class AttendanceService {
         return mapToResponse(attendanceRepository.save(attendance));
     }
 
-    // Mapper
+
     private AttendanceResponseDto mapToResponse(Attendance a) {
         return AttendanceResponseDto.builder()
                 .id(a.getId())

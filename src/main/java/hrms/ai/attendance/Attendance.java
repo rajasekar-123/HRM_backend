@@ -31,7 +31,7 @@ public class Attendance {
 
     @Column(nullable = false)
     private String status;
-    // PRESENT, ABSENT, HALF_DAY, LEAVE
+
 
     @Builder.Default
     private Boolean correctionRequested = false;

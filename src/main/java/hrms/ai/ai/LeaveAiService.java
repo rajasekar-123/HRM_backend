@@ -31,7 +31,7 @@ public class LeaveAiService {
 
         public LeaveAiDecisionDto evaluateLeave(LeaveApplyDto dto) {
 
-                // 1ï¸âƒ£ Holiday validation
+
                 LocalDate date = dto.getFromDate();
                 while (!date.isAfter(dto.getToDate())) {
                         if (holidayService.isHoliday(date)) {
@@ -44,12 +44,12 @@ public class LeaveAiService {
                         date = date.plusDays(1);
                 }
 
-                // 2ï¸âƒ£ Calculate days
+
                 int days = (int) ChronoUnit.DAYS.between(
                                 dto.getFromDate(),
                                 dto.getToDate()) + 1;
 
-                // 3ï¸âƒ£ Leave balance validation
+
                 boolean hasBalance = leaveBalanceService.hasSufficientBalance(
                                 dto.getEmployeeId(),
                                 dto.getLeaveType(),
@@ -63,18 +63,17 @@ public class LeaveAiService {
                                         .build();
                 }
 
-                // 4ï¸âƒ£ RAG policy retrieval
+
                 String policyContext = ragRetrieverService.retrieveLeavePolicy(dto.getLeaveType());
 
-                // 5ï¸âƒ£ Prompt building
+
                 String prompt = promptBuilder.buildLeavePrompt(dto, policyContext);
 
-                // 6ï¸âƒ£ LLM call (Ollama)
+
                 ChatResponse response = chatClient.call(
                                 new Prompt(prompt, OllamaOptions.create().withModel(model)));
                 String aiResponse = response.getResult().getOutput().getContent();
 
-                // 7ï¸âƒ£ Parse structured response
                 return aiResponseParser.parse(aiResponse);
         }
 }

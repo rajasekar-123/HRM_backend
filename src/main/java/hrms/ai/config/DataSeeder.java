@@ -63,14 +63,8 @@ public class DataSeeder implements CommandLineRunner {
 
 
 
-        // Seed Holidays
-        // Seed Leave Balance for Employee 1 (if completely empty, this is a simple
-        // checked seed)
-        // In a real app, you'd check by employee ID.
-        // Seed Leave Balance for Employee 1
 
 
-        // Seed Holidays for Current Year
         int year = LocalDate.now().getYear();
         if (!holidayRepository.existsByHolidayDate(LocalDate.of(year, 1, 1))) {
             holidayRepository

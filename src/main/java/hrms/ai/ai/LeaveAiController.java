@@ -13,17 +13,10 @@ public class LeaveAiController {
 
     private final LeaveAiService leaveAiService;
 
-    /**
-     * Employee asks AI if leave is advisable.
-     * AI validates:
-     * 1. Holiday
-     * 2. Leave balance
-     * 3. Policy via RAG
-     */
+
     @PreAuthorize("hasRole('EMPLOYEE')")
     @PostMapping("/check")
-    public LeaveAiDecisionDto checkLeaveEligibility(@RequestBody LeaveApplyDto request
-    )
+    public LeaveAiDecisionDto checkLeaveEligibility(@RequestBody LeaveApplyDto request)
     {
         return leaveAiService.evaluateLeave(request);
     }

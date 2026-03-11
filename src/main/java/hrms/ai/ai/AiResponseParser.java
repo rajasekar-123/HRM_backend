@@ -13,16 +13,16 @@ public class AiResponseParser {
 
     private final ObjectMapper mapper = new ObjectMapper();
 
-    // Pattern to find JSON object in messy LLM output
+
     private static final Pattern JSON_PATTERN = Pattern.compile("\\{[^{}]*\"eligible\"[^{}]*\\}", Pattern.DOTALL);
 
     public LeaveAiDecisionDto parse(String aiResponse) {
         try {
-            // 1. Try direct parse first
+
             return tryParse(aiResponse);
         } catch (Exception e1) {
             try {
-                // 2. Clean up markdown code blocks
+
                 String cleaned = aiResponse
                         .replaceAll("```json\\s*", "")
                         .replaceAll("```\\s*", "")
@@ -30,7 +30,7 @@ public class AiResponseParser {
                 return tryParse(cleaned);
             } catch (Exception e2) {
                 try {
-                    // 3. Extract JSON object using regex
+
                     Matcher matcher = JSON_PATTERN.matcher(aiResponse);
                     if (matcher.find()) {
                         return tryParse(matcher.group());
@@ -39,7 +39,7 @@ public class AiResponseParser {
                     // Fall through
                 }
 
-                // 4. Try to build response from text analysis
+
                 return buildFromText(aiResponse);
             }
         }
@@ -60,9 +60,9 @@ public class AiResponseParser {
                 && !lower.contains("\"eligible\": false")
                 && !lower.contains("\"eligible\":false");
 
-        // Extract a short reason from the text
+
         String reason = text.length() > 200 ? text.substring(0, 200) + "..." : text;
-        // Clean up for display
+
         reason = reason.replaceAll("[\\r\\n]+", " ").replaceAll("\\s+", " ").trim();
 
         return LeaveAiDecisionDto.builder()
